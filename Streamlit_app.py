@@ -65,7 +65,7 @@ elif nav == "Kidney Disease":
     st.header("Kidney Disease Prediction")
     # Load the kidney model
     try:
-        kidney_model = pickle.load(open(r'DTkidney.pkl', 'wb'))
+        kidney_model = pickle.load(open(r'LRkidney.pkl', 'wb'))
     except FileNotFoundError:
         st.error("Model file not found. Please check the file path.")
         st.stop() 
