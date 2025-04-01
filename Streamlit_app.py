@@ -2,7 +2,28 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
+import base64
 
+def set_background_image_local(image_path):
+    with open(image_path, "rb") as file:
+        data = file.read()
+    base64_image = base64.b64encode(data).decode("utf-8")
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/png;base64,{base64_image}");
+            background-size: contain;
+            background-position: fit;
+            background-repeat: repeat;
+            background-attachment: fixed;
+        }}     
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+set_background_image_local(r"c:\Users\ADMIN\Downloads\new.png")
 # Streamlit UI
 st.title("Multiple Disease Prediction")
 
