@@ -4,6 +4,12 @@ import pickle
 import pandas as pd
 import base64
 
+@st.cache_resource
+# Load models
+def load_model(model_path):
+    with open(model_path, 'rb') as file:
+        return pickle.load(file)
+
 def set_background_image_local(image_path):
     with open(image_path, "rb") as file:
         data = file.read()
@@ -13,7 +19,7 @@ def set_background_image_local(image_path):
         <style>
         .stApp {{
             background-image: url("data:image/png;base64,{base64_image}");
-            background-size: contain;
+            background-size: cover;
             background-position: fit;
             background-repeat: repeat;
             background-attachment: fixed;
@@ -23,7 +29,9 @@ def set_background_image_local(image_path):
         unsafe_allow_html=True
     )
 
-set_background_image_local(r"c:\Users\ADMIN\Downloads\new.png")
+set_background_image_local(r"12.png")
+
+
 # Streamlit UI
 st.title("Multiple Disease Prediction")
 
